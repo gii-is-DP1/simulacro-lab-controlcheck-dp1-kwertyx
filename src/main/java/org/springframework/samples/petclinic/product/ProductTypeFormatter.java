@@ -11,13 +11,27 @@ public class ProductTypeFormatter implements Formatter<ProductType>{
 
     @Override
     public String print(ProductType object, Locale locale) {
-        // TODO Auto-generated method stub
+        if(object != null) {
+            return String.format(locale, "%s", object.getName());
+        }
         return null;
     }
 
     @Override
     public ProductType parse(String text, Locale locale) throws ParseException {
-        // TODO Auto-generated method stub
+        if(text != null) {
+            try {
+                if(text!=null && text.length()<15) {
+                    ProductType pt = new ProductType();
+                    pt.setName(text);
+                    return pt;
+                } else {
+                    throw new ParseException("Hola", 1);
+                }
+            } catch(ParseException e) {
+                throw e;
+            }
+        }
         return null;
     }
     
